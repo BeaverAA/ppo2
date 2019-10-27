@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".activity.MainActivity" >
 
     <TextView
         android:id="@+id/textView"
@@ -21,12 +21,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textOff="@string/base_mod"
-        android:textOn="@string/scientific_mod" />
+        android:textOn="@string/scientific_mod"
+        android:onClick="tapChangeMode"/>
 
-    <fragment
-        android:name="com.example.calc.BaseCalcFunc"
-        android:id="@+id/fragment"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:id="@+id/calc"/>
+
 
 </LinearLayout>

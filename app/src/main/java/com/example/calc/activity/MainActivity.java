@@ -1,26 +1,73 @@
-package com.example.calc;
+package com.example.calc.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.core.util.Consumer;
+import androidx.fragment.app.FragmentActivity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.calc.CalcListener;
+import com.example.calc.R;
+import com.example.calc.fragment.BaseCalcFragment;
+import com.example.calc.fragment.CalcFragment;
+import com.example.calc.fragment.ScienceCalcFragment;
+import com.example.calc.controller.CalcController;
+
+public class MainActivity extends FragmentActivity implements CalcListener {
 
     private static final String NUMBER_KEY = "number";
+
+    private TextView mTextView;
+    private CalcController mCalcController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        mTextView = findViewById(R.id.textView);
+
+        Consumer<String> updateText = new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                mTextView.setText(s);
+            }
+        };
+
+        mCalcController = new CalcController(updateText);
+
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            final BaseCalcFragment baseCalcFragment = new BaseCalcFragment();
+            final ScienceCalcFragment scienceCalcFragment = new ScienceCalcFragment();
+            baseCalcFragment.setCalcListener(this);
+            scienceCalcFragment.setCalcListener(this);
+
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.baseCalc, baseCalcFragment)
+                    .replace(R.id.scienceCalc, scienceCalcFragment)
+                    .commit();
+        } else {
+            changeMode(findViewById(R.id.toggleButton));
+        }
+
     }
 
-    public void changeCalcMod(View view) {
+    public void tapChangeMode(View view) {
+        changeMode(view);
+    }
+
+    private void changeMode(@Nullable final View view) {
+        if (view == null) return;
         final ToggleButton toggleButton = (ToggleButton) view;
-        Fragment fragment = getFragment(toggleButton.isChecked());
+        CalcFragment fragment = getFragment(toggleButton.isChecked());
+        fragment.setCalcListener(this);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.calc, fragment)
                 .commit();
@@ -28,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putString(NUMBER_KEY, "123");
+        outState.putString(NUMBER_KEY, mCalcController.getNumber());
         super.onSaveInstanceState(outState);
     }
 
@@ -36,15 +83,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         String number = savedInstanceState.getString(NUMBER_KEY);
+        mCalcController.setNumber(number);
+        setText(mCalcController.getNumber());
+    }
+
+    private void setText(String text){
+        mTextView.setText(text);
     }
 
     @NonNull
-    private Fragment getFragment(boolean science) {
+    private CalcFragment getFragment(boolean science) {
         if (science) {
-            return new ScienceCalcActivity();
+            return new ScienceCalcFragment();
         } else {
-            return new BaseCalcActivity();
+            return new BaseCalcFragment();
         }
+    }
+
+    @Override
+    public void addValue(@NonNull final String value) {
+        mCalcController.addValue(value);
+    }
+
+    @Override
+    public void delete() {
+        mCalcController.delete();
+    }
+
+    @Override
+    public void clear() {
+        mCalcController.clear();
     }
 
 }

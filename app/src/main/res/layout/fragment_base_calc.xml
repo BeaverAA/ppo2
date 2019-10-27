@@ -1,14 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BaseCalcActivity">
+    android:background="@color/colorPrimary"
+    tools:context=".fragment.BaseCalcFragment"
+    android:baselineAligned="false">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_weight="1"
+        android:rowCount="4"
+        android:columnCount="3">
 
-</FrameLayout>
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/one"
+            android:text="@string/one" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/two"
+            android:text="@string/two" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/three"
+            android:text="@string/three" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/four"
+            android:text="@string/four" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/five"
+            android:text="@string/five" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/six"
+            android:text="@string/six" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/seven"
+            android:text="@string/seven" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/eight"
+            android:text="@string/eight" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/nine"
+            android:text="@string/nine" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/point"
+            android:text="@string/point" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/zero"
+            android:text="@string/zero" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/delete"
+            android:text="@string/delete" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:rowCount="5"
+        android:columnCount="1">
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/mult"
+            android:text="@string/mult" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/div"
+            android:text="@string/div" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/plus"
+            android:text="@string/plus" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/minus"
+            android:text="@string/minus" />
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/result"
+            android:text="@string/result" />
+
+    </GridLayout>
+
+</LinearLayout>
