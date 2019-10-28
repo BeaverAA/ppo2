@@ -15,8 +15,8 @@ import com.example.calc.CalcListener;
 import com.example.calc.R;
 import com.example.calc.fragment.BaseCalcFragment;
 import com.example.calc.fragment.CalcFragment;
-import com.example.calc.fragment.ScienceCalcFragment;
 import com.example.calc.controller.CalcController;
+import com.example.calc.ScienceCalcFragment;
 
 public class MainActivity extends FragmentActivity implements CalcListener {
 
