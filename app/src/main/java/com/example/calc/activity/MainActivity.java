@@ -11,14 +11,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.example.calc.CalcListener;
 import com.example.calc.R;
 import com.example.calc.fragment.BaseCalcFragment;
 import com.example.calc.fragment.CalcFragment;
 import com.example.calc.controller.CalcController;
 import com.example.calc.ScienceCalcFragment;
 
-public class MainActivity extends FragmentActivity implements CalcListener {
+public class MainActivity extends FragmentActivity {
 
     private static final String NUMBER_KEY = "number";
 
@@ -46,8 +45,8 @@ public class MainActivity extends FragmentActivity implements CalcListener {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             final BaseCalcFragment baseCalcFragment = new BaseCalcFragment();
             final ScienceCalcFragment scienceCalcFragment = new ScienceCalcFragment();
-            baseCalcFragment.setCalcListener(this);
-            scienceCalcFragment.setCalcListener(this);
+            baseCalcFragment.setCalcListener(mCalcController);
+            scienceCalcFragment.setCalcListener(mCalcController);
 
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.baseCalc, baseCalcFragment)
@@ -67,7 +66,7 @@ public class MainActivity extends FragmentActivity implements CalcListener {
         if (view == null) return;
         final ToggleButton toggleButton = (ToggleButton) view;
         CalcFragment fragment = getFragment(toggleButton.isChecked());
-        fragment.setCalcListener(this);
+        fragment.setCalcListener(mCalcController);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.calc, fragment)
                 .commit();
@@ -98,21 +97,6 @@ public class MainActivity extends FragmentActivity implements CalcListener {
         } else {
             return new BaseCalcFragment();
         }
-    }
-
-    @Override
-    public void addValue(@NonNull final String value) {
-        mCalcController.addValue(value);
-    }
-
-    @Override
-    public void delete() {
-        mCalcController.delete();
-    }
-
-    @Override
-    public void clear() {
-        mCalcController.clear();
     }
 
 }

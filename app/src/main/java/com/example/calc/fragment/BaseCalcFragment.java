@@ -3,15 +3,13 @@ package com.example.calc.fragment;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.example.calc.CalcListener;
 import com.example.calc.R;
+import com.example.calc.controller.CalcController;
 
 public class BaseCalcFragment extends CalcFragment implements View.OnLongClickListener {
 
@@ -104,7 +102,7 @@ public class BaseCalcFragment extends CalcFragment implements View.OnLongClickLi
     }
 
     @Override
-    public void setCalcListener(@NonNull final CalcListener calcListener) {
+    public void setCalcListener(@NonNull final CalcController calcListener) {
         mCalcListener = calcListener;
     }
 

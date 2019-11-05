@@ -93,8 +93,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:rowCount="5"
+        android:rowCount="6"
         android:columnCount="1">
+
+        <Button
+            android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+            android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+            android:id="@+id/pm"
+            android:text="@string/pm" />
 
         <Button
             android:layout_columnWeight="@android:integer/config_mediumAnimTime"

@@ -1,15 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ScienceCalcFragment"
-    android:background="@color/colorMyBlue">
+    android:background="@color/colorMyBlue"
+    android:rowCount="5"
+    android:columnCount="3">
 
     <Button
         android:id="@+id/mod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
         android:text="%"/>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/sin"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text="sin"/>
+
+    <Button
+        android:id="@+id/cos"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text="cos"/>
+
+    <Button
+        android:id="@+id/tan"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text="tan"/>
+
+    <Button
+        android:id="@+id/ln"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text="ln"/>
+
+    <Button
+        android:id="@+id/log"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text="log"/>
+
+    <Button
+        android:id="@+id/fac"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text="!"/>
+
+    <Button
+        android:id="@+id/pi"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text="pi"/>
+
+    <Button
+        android:id="@+id/e"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text="e"/>
+
+    <Button
+        android:id="@+id/pow"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text="^"/>
+
+    <Button
+        android:id="@+id/op"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text="("/>
+
+    <Button
+        android:id="@+id/cb"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text=")"/>
+
+    <Button
+        android:id="@+id/sqrt"
+        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
+        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
+        android:text="sqrt"/>
+
+
+</GridLayout>

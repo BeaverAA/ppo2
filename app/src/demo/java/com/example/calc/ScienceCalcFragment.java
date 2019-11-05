@@ -8,31 +8,25 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.calc.CalcListener;
-import com.example.calc.R;
+import com.example.calc.controller.CalcController;
 import com.example.calc.fragment.CalcFragment;
 
 public class ScienceCalcFragment extends CalcFragment {
-
-    @Nullable
-    private CalcListener mCalcListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.fragment_science_calc, container, false);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_science_calc, container, false);
     }
 
     @Override
     public void onClick(View view) {
-
+        // Empty
     }
 
     @Override
-    public void setCalcListener(@NonNull final CalcListener calcListener) {
-        mCalcListener = calcListener;
+    public void setCalcListener(@NonNull final CalcController calcListener) {
+        // Empty
     }
 }
