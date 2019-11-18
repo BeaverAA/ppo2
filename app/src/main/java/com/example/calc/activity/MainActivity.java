@@ -45,8 +45,8 @@ public class MainActivity extends FragmentActivity {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             final BaseCalcFragment baseCalcFragment = new BaseCalcFragment();
             final ScienceCalcFragment scienceCalcFragment = new ScienceCalcFragment();
-            baseCalcFragment.setCalcListener(mCalcController);
-            scienceCalcFragment.setCalcListener(mCalcController);
+            baseCalcFragment.setCalcController(mCalcController);
+            scienceCalcFragment.setCalcController(mCalcController);
 
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.baseCalc, baseCalcFragment)
@@ -66,7 +66,7 @@ public class MainActivity extends FragmentActivity {
         if (view == null) return;
         final ToggleButton toggleButton = (ToggleButton) view;
         CalcFragment fragment = getFragment(toggleButton.isChecked());
-        fragment.setCalcListener(mCalcController);
+        fragment.setCalcController(mCalcController);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.calc, fragment)
                 .commit();

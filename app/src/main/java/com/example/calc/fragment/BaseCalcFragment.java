@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.calc.R;
 import com.example.calc.controller.CalcController;
 
-public class BaseCalcFragment extends CalcFragment implements View.OnLongClickListener {
+public class BaseCalcFragment extends CalcFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,75 +44,76 @@ public class BaseCalcFragment extends CalcFragment implements View.OnLongClickLi
     @Override
     public void onClick(View view) {
 
-        if (mCalcListener == null) return;
+        if (mCalcController == null) return;
 
         switch (view.getId()) {
             case R.id.one:
-                mCalcListener.addValue("1");
+                mCalcController.addValue("1");
                 break;
             case R.id.two:
-                mCalcListener.addValue("2");
+                mCalcController.addValue("2");
                 break;
             case R.id.three:
-                mCalcListener.addValue("3");
+                mCalcController.addValue("3");
                 break;
             case R.id.four:
-                mCalcListener.addValue("4");
+                mCalcController.addValue("4");
                 break;
             case R.id.five:
-                mCalcListener.addValue("5");
+                mCalcController.addValue("5");
                 break;
             case R.id.six:
-                mCalcListener.addValue("6");
+                mCalcController.addValue("6");
                 break;
             case R.id.seven:
-                mCalcListener.addValue("7");
+                mCalcController.addValue("7");
                 break;
             case R.id.eight:
-                mCalcListener.addValue("8");
+                mCalcController.addValue("8");
                 break;
             case R.id.nine:
-                mCalcListener.addValue("9");
+                mCalcController.addValue("9");
                 break;
             case R.id.zero:
-                mCalcListener.addValue("0");
+                mCalcController.addValue("0");
                 break;
             case R.id.point:
-                mCalcListener.addValue(",");
+                mCalcController.addValue(".");
                 break;
             case R.id.mult:
-                mCalcListener.addValue("×");
+                mCalcController.addValue("*");
                 break;
             case R.id.div:
-                mCalcListener.addValue("÷");
+                mCalcController.addValue("/");
                 break;
             case R.id.plus:
-                mCalcListener.addValue("+");
+                mCalcController.addValue("+");
                 break;
             case R.id.minus:
-                mCalcListener.addValue("-");
+                mCalcController.addValue("-");
                 break;
             case R.id.result:
+                mCalcController.calculate();
                 break;
             case R.id.delete:
-                mCalcListener.delete();
+                mCalcController.delete();
                 break;
         }
 
     }
 
     @Override
-    public void setCalcListener(@NonNull final CalcController calcListener) {
-        mCalcListener = calcListener;
+    public void setCalcController(@NonNull final CalcController calcListener) {
+        mCalcController = calcListener;
     }
 
     @Override
     public boolean onLongClick(View v) {
 
-        if (mCalcListener == null) return false;
+        if (mCalcController == null) return false;
 
         if (v.getId() == R.id.delete){
-            mCalcListener.clear();
+            mCalcController.clear();
             return true;
         } else {
             return false;

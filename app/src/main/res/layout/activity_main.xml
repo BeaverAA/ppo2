@@ -8,11 +8,11 @@
     tools:context=".activity.MainActivity" >
 
     <TextView
+        android:gravity="end|center_vertical"
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         android:background="#000000"
-        android:text="TextView"
         android:textColor="#FFFFFF"
         android:textSize="40sp" />
 

@@ -13,13 +13,12 @@
     <string name="seven">7</string>
     <string name="eight">8</string>
     <string name="nine">9</string>
-    <string name="point">,</string>
+    <string name="point">.</string>
     <string name="zero">0</string>
     <string name="delete">Del</string>
-    <string name="mult">&#215;</string>
-    <string name="div">&#247;</string>
+    <string name="mult">*</string>
+    <string name="div">/</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="result">=</string>
-    <string name="pm">+/-</string>
 </resources>

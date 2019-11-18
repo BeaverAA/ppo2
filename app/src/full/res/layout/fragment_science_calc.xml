@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ScienceCalcFragment"
     android:background="@color/colorMyBlue"
-    android:rowCount="5"
+    android:rowCount="4"
     android:columnCount="3">
 
     <Button
@@ -34,22 +34,16 @@
         android:text="tan"/>
 
     <Button
-        android:id="@+id/ln"
+        android:id="@+id/log"
         android:layout_columnWeight="@android:integer/config_mediumAnimTime"
         android:layout_rowWeight="@android:integer/config_mediumAnimTime"
         android:text="ln"/>
 
     <Button
-        android:id="@+id/log"
+        android:id="@+id/fact"
         android:layout_columnWeight="@android:integer/config_mediumAnimTime"
         android:layout_rowWeight="@android:integer/config_mediumAnimTime"
-        android:text="log"/>
-
-    <Button
-        android:id="@+id/fac"
-        android:layout_columnWeight="@android:integer/config_mediumAnimTime"
-        android:layout_rowWeight="@android:integer/config_mediumAnimTime"
-        android:text="!"/>
+        android:text="FACT"/>
 
     <Button
         android:id="@+id/pi"

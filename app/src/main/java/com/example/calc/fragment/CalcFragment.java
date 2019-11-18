@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.calc.controller.CalcController;
 
-public abstract class CalcFragment extends Fragment implements View.OnClickListener {
+public abstract class CalcFragment extends Fragment implements View.OnClickListener, View.OnLongClickListener {
 
     @Nullable
-    CalcController mCalcListener;
+    protected CalcController mCalcController;
 
-    public abstract void setCalcListener(@NonNull final CalcController calcListener);
+    public abstract void setCalcController(@NonNull final CalcController calcListener);
 
 }
