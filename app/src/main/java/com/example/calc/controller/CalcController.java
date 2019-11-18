@@ -38,22 +38,22 @@ public class CalcController {
     private Consumer<String> mUpdateText;
 
     @NonNull
-    private StringBuilder mNumber;
+    private StringBuilder mExp = new StringBuilder("0");
 
     public CalcController(@NonNull final Consumer<String> updateText) {
         mUpdateText = updateText;
-        setNumber("0");
+        updateText.accept(mExp.toString());
     }
 
     @NonNull
     public String getNumber() {
-        return mNumber.toString();
+        return mExp.toString();
     }
 
     public void setNumber(@Nullable final String number) {
         final String newNumber = number != null ? number : "0";
-        mNumber = new StringBuilder(newNumber);
-        mUpdateText.accept(mNumber.toString());
+        mExp = new StringBuilder(newNumber);
+        mUpdateText.accept(mExp.toString());
     }
 
     public void addValue(@NonNull final String value) {
@@ -61,19 +61,23 @@ public class CalcController {
             setNumber("0");
             isTextError = false;
         }
-        final int length = mNumber.length();
-        if (length == 1 && mNumber.charAt(0) == '0' && mSet.contains(value) == false) {
+        final int length = mExp.length();
+        if (length == 1 && mExp.charAt(0) == '0' && mSet.contains(value) == false) {
             setNumber(value);
-        } else if (mSet.contains(value) && mSet.contains(mNumber.substring(length - 1))) {
-            mNumber.replace(length - 1, length, value);
+        } else if (mSet.contains(value) && mSet.contains(mExp.substring(length - 1))) {
+            mExp.replace(length - 1, length, value);
         } else {
-            mNumber.append(value);
+            Character lastChar = mExp.charAt(mExp.length() - 1);
+            if (value.length() > 1 && (Character.isDigit(lastChar) || lastChar == ')')) {
+                mExp.append("*");
+            }
+            mExp.append(value);
         }
-        mUpdateText.accept(mNumber.toString());
+        mUpdateText.accept(mExp.toString());
     }
 
     public void calculate() {
-        Expression expression = new Expression(mNumber.toString());
+        Expression expression = new Expression(getNormalizedExp());
         try {
             setNumber(expression.eval().toPlainString());
         } catch (Exception e) {
@@ -82,12 +86,17 @@ public class CalcController {
         }
     }
 
+    private String getNormalizedExp() {
+        String exp = mExp.toString();
+        return exp.replaceAll("LN", "LOG");
+    }
+
     public void delete() {
-        final int length = mNumber.length();
+        final int length = mExp.length();
         if (length == 1 || isTextError) {
             setNumber("0");
         } else {
-            String stringNumber = mNumber.toString();
+            String stringNumber = mExp.toString();
             String equalSuffix = null;
             for (String suffix : mFunctions) {
                 if (stringNumber.endsWith(suffix)) {
@@ -96,13 +105,13 @@ public class CalcController {
                 }
             }
             if (equalSuffix == null) {
-                mNumber.deleteCharAt(length - 1);
+                mExp.deleteCharAt(length - 1);
             } else {
-                mNumber.delete(length - equalSuffix.length(), length);
-                if (mNumber.length() == 0) setNumber("0");
+                mExp.delete(length - equalSuffix.length(), length);
+                if (mExp.length() == 0) setNumber("0");
             }
         }
-        mUpdateText.accept(mNumber.toString());
+        mUpdateText.accept(mExp.toString());
     }
 
     public void clear() {

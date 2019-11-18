@@ -23,7 +23,7 @@ public class ScienceCalcFragment extends CalcFragment {
     private AlertDialog alertDialog;
 
     @NonNull
-    private String selectedLog = "LN";
+    private static String selectedLog = "LN";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +44,7 @@ public class ScienceCalcFragment extends CalcFragment {
 
         logButton = view.findViewById(R.id.log);
 
+        logButton.setText(selectedLog);
         logButton.setOnClickListener(this);
         logButton.setOnLongClickListener(this);
 

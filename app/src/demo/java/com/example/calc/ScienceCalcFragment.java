@@ -25,8 +25,14 @@ public class ScienceCalcFragment extends CalcFragment {
         // Empty
     }
 
+
     @Override
-    public void setCalcListener(@NonNull final CalcController calcListener) {
+    public void setCalcController(@NonNull CalcController calcListener) {
         // Empty
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        return false;
     }
 }
