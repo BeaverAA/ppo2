@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".fragment.BaseCalcFragment"
+    tools:context=".BaseCalcFragment"
     android:baselineAligned="false">
 
     <GridLayout
@@ -16,61 +16,73 @@
         android:columnCount="3">
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/one"
             android:text="@string/one" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/two"
             android:text="@string/two" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/three"
             android:text="@string/three" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/four"
             android:text="@string/four" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/five"
             android:text="@string/five" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/six"
             android:text="@string/six" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/seven"
             android:text="@string/seven" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/eight"
             android:text="@string/eight" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/nine"
             android:text="@string/nine" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/point"
             android:text="@string/point" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/zero"
             android:text="@string/zero" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_rowWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/delete"
             android:text="@string/delete" />
@@ -85,26 +97,31 @@
         android:columnCount="1">
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_columnWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/mult"
             android:text="@string/mult" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_columnWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/div"
             android:text="@string/div" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_columnWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/plus"
             android:text="@string/plus" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_columnWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/minus"
             android:text="@string/minus" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_columnWeight="@android:integer/config_mediumAnimTime"
             android:id="@+id/result"
             android:text="@string/result" />

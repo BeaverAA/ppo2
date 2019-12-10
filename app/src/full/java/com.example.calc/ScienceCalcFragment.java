@@ -1,29 +1,16 @@
 package com.example.calc;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-import com.example.calc.controller.CalcController;
-import com.example.calc.fragment.CalcFragment;
+public class ScienceCalcFragment extends Fragment implements View.OnClickListener {
 
-public class ScienceCalcFragment extends CalcFragment {
-
-    @Nullable
-    private Button logButton;
-
-    @Nullable
-    private AlertDialog alertDialog;
-
-    @NonNull
-    private static String selectedLog = "LN";
+    private CalcManager mCalcManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,28 +23,17 @@ public class ScienceCalcFragment extends CalcFragment {
         view.findViewById(R.id.cb).setOnClickListener(this);
         view.findViewById(R.id.sin).setOnClickListener(this);
         view.findViewById(R.id.cos).setOnClickListener(this);
-        view.findViewById(R.id.tan).setOnClickListener(this);
         view.findViewById(R.id.sqrt).setOnClickListener(this);
         view.findViewById(R.id.pi).setOnClickListener(this);
         view.findViewById(R.id.e).setOnClickListener(this);
         view.findViewById(R.id.pow).setOnClickListener(this);
+        view.findViewById(R.id.log).setOnClickListener(this);
+        view.findViewById(R.id.log10).setOnClickListener(this);
 
-        logButton = view.findViewById(R.id.log);
-
-        logButton.setText(selectedLog);
-        logButton.setOnClickListener(this);
-        logButton.setOnLongClickListener(this);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        final String[] logTypes = new String[] {"LOG10", "LN"};
-        alertDialog = builder.setTitle("Select log type")
-                        .setItems(logTypes, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                selectedLog = logTypes[which];
-                                logButton.setText(selectedLog);
-                            }
-                        }).create();
+        final Activity activity = getActivity();
+        if (activity instanceof CalcView) {
+            mCalcManager = ((CalcView) activity).getManager();
+        }
 
         return view;
     }
@@ -65,60 +41,46 @@ public class ScienceCalcFragment extends CalcFragment {
     @Override
     public void onClick(View view) {
 
-        if (mCalcController == null) return;
+        if (mCalcManager == null) return;
 
         switch (view.getId()) {
             case R.id.mod:
-                mCalcController.addValue("%");
+                mCalcManager.addValue("%");
                 break;
             case R.id.fact:
-                mCalcController.addValue("FACT(");
+                mCalcManager.addValue("FACT(");
                 break;
             case R.id.op:
-                mCalcController.addValue("(");
+                mCalcManager.addValue("(");
                 break;
             case R.id.cb:
-                mCalcController.addValue(")");
+                mCalcManager.addValue(")");
                 break;
             case R.id.sin:
-                mCalcController.addValue("SIN(");
+                mCalcManager.addValue("SIN(");
                 break;
             case R.id.cos:
-                mCalcController.addValue("COS(");
-                break;
-            case R.id.tan:
-                mCalcController.addValue("TAN(");
+                mCalcManager.addValue("COS(");
                 break;
             case R.id.log:
-                mCalcController.addValue(selectedLog + "(");
+                mCalcManager.addValue("LN(");
+                break;
+            case R.id.log10:
+                mCalcManager.addValue("LOG10(");
                 break;
             case R.id.sqrt:
-                mCalcController.addValue("SQRT(");
+                mCalcManager.addValue("SQRT(");
                 break;
             case R.id.pi:
-                mCalcController.addValue("PI");
+                mCalcManager.addValue("PI");
                 break;
             case R.id.e:
-                mCalcController.addValue("E");
+                mCalcManager.addValue("E");
                 break;
             case R.id.pow:
-                mCalcController.addValue("^");
+                mCalcManager.addValue("^");
                 break;
         }
-    }
-
-    @Override
-    public void setCalcController(@NonNull final CalcController calcListener) {
-        mCalcController = calcListener;
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        if (v.getId() == R.id.log && alertDialog != null) {
-            alertDialog.show();
-            return true;
-        }
-        return false;
     }
 
 }

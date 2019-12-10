@@ -1,17 +1,17 @@
-package com.example.calc.fragment;
+package com.example.calc;
 
+import android.app.Activity;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.calc.R;
-import com.example.calc.controller.CalcController;
+public class BaseCalcFragment extends Fragment implements View.OnClickListener, View.OnLongClickListener {
 
-public class BaseCalcFragment extends CalcFragment {
+    private CalcManager mCalcManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,86 +38,87 @@ public class BaseCalcFragment extends CalcFragment {
         view.findViewById(R.id.delete).setOnClickListener(this);
         view.findViewById(R.id.delete).setOnLongClickListener(this);
 
+        final Activity activity = getActivity();
+        if (activity instanceof CalcView) {
+            mCalcManager = ((CalcView) activity).getManager();
+        }
+
         return view;
     }
 
     @Override
     public void onClick(View view) {
 
-        if (mCalcController == null) return;
+        if (mCalcManager == null) return;
 
         switch (view.getId()) {
             case R.id.one:
-                mCalcController.addValue("1");
+                mCalcManager.addValue("1");
                 break;
             case R.id.two:
-                mCalcController.addValue("2");
+                mCalcManager.addValue("2");
                 break;
             case R.id.three:
-                mCalcController.addValue("3");
+                mCalcManager.addValue("3");
                 break;
             case R.id.four:
-                mCalcController.addValue("4");
+                mCalcManager.addValue("4");
                 break;
             case R.id.five:
-                mCalcController.addValue("5");
+                mCalcManager.addValue("5");
                 break;
             case R.id.six:
-                mCalcController.addValue("6");
+                mCalcManager.addValue("6");
                 break;
             case R.id.seven:
-                mCalcController.addValue("7");
+                mCalcManager.addValue("7");
                 break;
             case R.id.eight:
-                mCalcController.addValue("8");
+                mCalcManager.addValue("8");
                 break;
             case R.id.nine:
-                mCalcController.addValue("9");
+                mCalcManager.addValue("9");
                 break;
             case R.id.zero:
-                mCalcController.addValue("0");
+                mCalcManager.addValue("0");
                 break;
             case R.id.point:
-                mCalcController.addValue(".");
+                mCalcManager.addValue(".");
                 break;
             case R.id.mult:
-                mCalcController.addValue("*");
+                mCalcManager.addValue("*");
                 break;
             case R.id.div:
-                mCalcController.addValue("/");
+                mCalcManager.addValue("/");
                 break;
             case R.id.plus:
-                mCalcController.addValue("+");
+                mCalcManager.addValue("+");
                 break;
             case R.id.minus:
-                mCalcController.addValue("-");
+                mCalcManager.addValue("-");
                 break;
             case R.id.result:
-                mCalcController.calculate();
+                mCalcManager.calculate();
                 break;
             case R.id.delete:
-                mCalcController.delete();
+                mCalcManager.delete();
                 break;
         }
 
-    }
-
-    @Override
-    public void setCalcController(@NonNull final CalcController calcListener) {
-        mCalcController = calcListener;
     }
 
     @Override
     public boolean onLongClick(View v) {
 
-        if (mCalcController == null) return false;
+        if (mCalcManager == null) return false;
 
         if (v.getId() == R.id.delete){
-            mCalcController.clear();
+            mCalcManager.clear();
             return true;
         } else {
             return false;
         }
     }
+
 }
 

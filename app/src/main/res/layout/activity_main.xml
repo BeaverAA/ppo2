@@ -5,29 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.MainActivity" >
+    tools:context=".MainActivity" >
 
     <TextView
-        android:gravity="end|center_vertical"
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="#000000"
+        android:background="#1D1C1C"
+        android:gravity="end|center_vertical"
         android:textColor="#FFFFFF"
         android:textSize="40sp" />
 
-    <ToggleButton
-        android:id="@+id/toggleButton"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textOff="@string/base_mod"
-        android:textOn="@string/scientific_mod"
-        android:onClick="tapChangeMode"/>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/calc"/>
-
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
